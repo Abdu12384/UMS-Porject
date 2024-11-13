@@ -20,6 +20,29 @@ $border-color: #ddd;
     background-color: darken($bg-color, 10%);
   }
 }
+ 
+.search-container {
+  position: absolute;
+  width: 300px;
+  left: 550px;
+  top: 60px;
+  display: flex;
+  
+  .search-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    transition: all 0.3s ease;
+    
+    &:focus {
+      border-color: #007bff;
+    }
+  }
+}
+
 
 // Styles
 .dashboard-container {

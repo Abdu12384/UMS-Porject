@@ -42,28 +42,28 @@ function UserProfile() {
     setIsLogoutPopupVisible(false) // Close the confirmation popup
   }
 
-   useEffect(() => {
+  //  useEffect(() => {
     
-      const  fetcProfile = async () =>{
+  //     const  fetcProfile = async () =>{
       
-        try {
+  //       try {
 
-          const response = await axios.get('http://localhost:3000/user/profile',{
-             withCredentials:true
-          })
-         console.log(response.data.user);
+  //         const response = await axios.get('http://localhost:3000/user/profile',{
+  //            withCredentials:true
+  //         })
+  //        console.log(response.data.user);
          
           
-        } catch (error) {
-          setError('Failed to fetch user profile')
-        }     
-      }
-      if(!user){
+  //       } catch (error) {
+  //         setError('Failed to fetch user profile')
+  //       }     
+  //     }
+  //     if(!user){
 
-        fetcProfile();
-      }
+  //       fetcProfile();
+  //     }
 
-   },[user,navigate])
+  //  },[user,navigate])
     
    
   return (

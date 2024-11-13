@@ -8,10 +8,11 @@ import {  toast } from 'react-toastify';
 import '../../../assets/styles/Dashboard.scss'
 function Dashboard() {
   const [users, setUsers]= useState([])
-   const [loading, setLoading] = useState(true)
    const [editUser, setEditUser] = useState(null)
+   const [filteredUsers, setFilteredUsers] = useState([]) // To store filtered users for search
    const [message , setMessage] = useState('')
    const [confirmDelete, setConfirmDelete] = useState(null);  
+   const [searchTerm, setSearchTerm] = useState('')  // State for storing the search term
 
    const navigate = useNavigate()
    //Get AdminStatus From Redux
@@ -21,14 +22,13 @@ function Dashboard() {
     useEffect(() =>{
         const fetchUsers = async ()=>{
           try {
- 
-                      
+           
               const response = await axios.get('http://localhost:3000/admin/dashboard',{
                    withCredentials:true
                 })         
                 
                 setUsers(response.data)
-                setLoading(false)
+                setFilteredUsers(response.data)
             } catch (error) {
               console.error('Error fetching users:',error)
               setLoading(false)
@@ -37,6 +37,23 @@ function Dashboard() {
         fetchUsers()
     },[])
       
+    useEffect(() => {
+      if (searchTerm.trim() === '') {
+        setFilteredUsers(users); // If search is empty, show all users
+      } else {
+        setFilteredUsers(
+          users.filter((user) =>
+            user.name.toLowerCase().startsWith(searchTerm.toLowerCase())
+          )
+        );
+      }
+    }, [searchTerm, users]); // This will trigger whenever the searchTerm or users list changes
+  
+
+     
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+  };
 
 
      const handleEdit = (userId) =>{
@@ -69,6 +86,7 @@ function Dashboard() {
 
        toast.success('User deleted successfully!', { position: 'top-right' });
        setUsers((prevUser) => prevUser.filter((user)=> user._id !== userId))
+       setFilteredUsers((prevUser) => prevUser.filter((user)=> user._id !== userId))
        setConfirmDelete(null)
       } catch (error) {
         console.error('Error deleting user:',error)
@@ -88,7 +106,18 @@ function Dashboard() {
         <div className="dashboard-actions">
           <button className="btn btn-primary" onClick={() => navigate('/admin/home')}>Back To Home</button>
           <button className="btn btn-success" onClick={() => navigate('/admin/addUser')}>Add User +</button>
+          <div className="search-container">
+            <input
+              type="text"
+              placeholder="Search users by name..."
+              value={searchTerm}
+              onChange={handleSearch}
+              className="search-input"
+            />
+            <button onClick={handleSearch} className="btn btn-search">Search</button>
+          </div>
         </div>
+        
       )}
 
       {message && <h3 className="success-message">{message}</h3>}
@@ -108,10 +137,10 @@ function Dashboard() {
               </tr>
             </thead>
             <tbody>
-              {users.map((user) => (
+            {filteredUsers.map((user) => (
                 <tr key={user._id}>
                   <td>
-                    <img src={ user?.profileImage ? `http://localhost:3000${user.profileImage}`: '/src/assets/dummy.jpg'} alt={user.name} className="user-image" />
+                    <img src={ user?.profileImage ? `http://localhost:3000${user.profileImage}` : '/src/assets/dummy.jpg'} alt={user.name} className="user-image" />
                   </td>
                   <td>{user.name}</td>
                   <td>{user.email}</td>

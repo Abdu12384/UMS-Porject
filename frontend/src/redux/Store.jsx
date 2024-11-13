@@ -11,7 +11,7 @@ const authPersistConfig = {
   storage,
 };
 
-const adminPersistConfig = {
+const adminPersistConfig = { 
   key: 'admin',
   storage,
 };
