@@ -1,0 +1,215 @@
+
+
+$primary-color: #4a90e2;
+$secondary-color: #f3f4f6;
+$text-color: #333;
+$error-color: #e53e3e;
+$success-color: #48bb78;
+
+@mixin input-style {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+
+  &:focus {
+    outline: none;
+    border-color: $primary-color;
+    box-shadow: 0 0 0 2px rgba($primary-color, 0.1);
+  }
+}
+
+.edit-profile-user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(182,233,246,0.8880484114977307) 0%, rgba(74,144,226,1) 100%);
+  padding: 20px;
+}
+
+.edit-profile-card {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  width: 100%;
+  max-width: 500px;
+
+  h1 {
+    color: $primary-color;
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .message {
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+
+    &.error {
+      background-color: rgba($error-color, 0.1);
+      color: $error-color;
+    }
+
+    &.success {
+      background-color: rgba($success-color, 0.1);
+      color: $success-color;
+    }
+  }
+
+  .image-upload {
+    text-align: center;
+    margin-bottom: 20px;
+
+    label {
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .image-placeholder {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background-color: $secondary-color;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+      color: $primary-color;
+
+      span {
+        margin-top: 10px;
+        font-size: 14px;
+      }
+    }
+
+    .profile-image-preview {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .hidden-input {
+      display: none;
+    }
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+
+    label {
+      display: flex;
+      align-items: center;
+      margin-bottom: 5px;
+      color: $text-color;
+      font-weight: 500;
+
+      svg {
+        margin-right: 10px;
+        color: $primary-color;
+      }
+    }
+
+    input {
+      @include input-style;
+    }
+
+    .error {
+      color: $error-color;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+  }
+
+  .save-button {
+    width: 100%;
+    padding: 12px 20px;
+    background-color: $primary-color;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+      margin-right: 10px;
+    }
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .edit-profile-card {
+    padding: 20px;
+  }
+}
+
+.confirmation-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  text-align: center;
+}
+
+.popup-content h3 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.popup-content button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: none;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.confirm-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.confirm-btn:hover {
+  background-color: #218838;
+}
+
+.cancel-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.cancel-btn:hover {
+  background-color: #c82333;
+}

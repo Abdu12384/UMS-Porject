@@ -1,0 +1,201 @@
+// Variables
+$primary-color: #3498db;
+$success-color: #2ecc71;
+$danger-color: #e74c3c;
+$background-color: #f5f5f5;
+$text-color: #333;
+$border-color: #ddd;
+
+// Mixins
+@mixin button($bg-color) {
+  background-color: $bg-color;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: darken($bg-color, 10%);
+  }
+}
+
+// Styles
+.dashboard-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: $background-color;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    color: $text-color;
+    margin-bottom: 20px;
+  }
+}
+
+.dashboard-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.btn {
+  @include button($primary-color);
+
+  &.btn-success {
+    @include button($success-color);
+  }
+
+  &.btn-delete {
+    @include button($danger-color);
+  }
+}
+
+.success-message {
+  background-color: $success-color;
+  color: white;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+.dashboard-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+
+  th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid $border-color;
+  }
+
+  th {
+    background-color: $primary-color;
+    color: white;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  .user-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .action-buttons {
+    display: flex;
+    gap: 10px;
+  }
+}
+
+.edit-user-form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    margin-bottom: 20px;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid $border-color;
+    border-radius: 4px;
+  }
+
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .dashboard-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .dashboard-table {
+    font-size: 14px;
+
+    th, td {
+      padding: 8px;
+    }
+
+    .user-image {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+  h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  .modal-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+
+    .btn {
+      padding: 8px 12px;
+      font-size: 14px;
+      border-radius: 4px;
+      cursor: pointer;
+
+      &.btn-confirm {
+        background-color: #dc3545;
+        color: #fff;
+      }
+
+      &.btn-cancel {
+        background-color: #6c757d;
+        color: #fff;
+      }
+    }
+  }
+}

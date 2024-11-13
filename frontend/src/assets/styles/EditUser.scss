@@ -1,0 +1,120 @@
+// Variables for consistent styling
+$primary-color: rgb(0, 123, 255);
+$button-color: #2196f3;
+$cancel-button-color: #f44336;
+$background-color: #f9f9f9;
+$input-border-color: #ccc;
+$input-focus-color: #007BFF;
+
+
+
+// Edit User form container
+.edit-user-admin {
+  width: 350px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 200px;
+
+  h3 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+
+  label {
+    font-size: 16px;
+    color: #333;
+    display: block;
+    margin-right: 200px;
+    margin-top: 20px;
+  }
+
+  input {
+    width: 280px;
+    padding: 10px;
+    border: 1px solid $input-border-color;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    font-size: 16px;
+
+    &:focus {
+      border-color: $input-focus-color;
+      outline: none;
+    }
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    text-align: center;
+
+    &:hover {
+      opacity: 0.9;
+    }
+
+    &.save-button {
+      background-color: $primary-color;
+      color: white;
+      border: none;
+    }
+
+    &.cancel-button {
+      background-color: $cancel-button-color;
+      color: white;
+      border: none;
+      margin-top: 10px;
+    }
+  }
+
+  // Responsive adjustments
+  @media (max-width: 768px) {
+    padding: 20px;
+    max-width: 100%;
+  }
+}
+.error{
+  color: red;
+   
+}
+.confirmation-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.yes-button, .no-button {
+  margin: 0 10px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.yes-button {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.no-button {
+  background-color: #f44336;
+  color: white;
+}

@@ -1,0 +1,140 @@
+
+
+$primary-color: #4a90e2;
+$secondary-color: #f3f4f6;
+$text-color: #333;
+$error-color: #e53e3e;
+$success-color: #48bb78;
+
+@mixin input-style {
+  width: 100%;
+  padding: 12px 15px 12px 40px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+
+  &:focus {
+    outline: none;
+    border-color: $primary-color;
+    box-shadow: 0 0 0 2px rgba($primary-color, 0.1);
+  }
+}
+
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: $secondary-color;
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(182,233,246,0.8880484114977307) 0%, rgba(74,144,226,1) 78%);
+}
+
+.signup-card {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  padding: 40px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.signup-title {
+  color: $primary-color;
+  font-size: 28px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.signup-form {
+  .form-group {
+    margin-bottom: 20px;
+    position: relative;
+
+    .form-label {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+      color: $text-color;
+      font-weight: 500;
+
+      svg {
+        margin-right: 8px;
+        color: $primary-color;
+      }
+    }
+
+    input {
+      @include input-style;
+    }
+
+    svg {
+      position: absolute;
+      left: 12px;
+      top: 38px;
+      color: #aaa;
+      transition: color 0.3s ease;
+    }
+
+    input:focus + svg {
+      color: $primary-color;
+    }
+  }
+
+  .submit-button {
+    width: 100%;
+    padding: 12px 20px;
+    background-color: $primary-color;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+      margin-right: 10px;
+    }
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+  }
+}
+
+.message {
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 500;
+
+  &.success {
+    background-color: rgba($success-color, 0.1);
+    color: $success-color;
+  }
+
+  &.error {
+    background-color: rgba($error-color, 0.1);
+    color: $error-color;
+  }
+}
+
+@media (max-width: 480px) {
+  .signup-card {
+    padding: 30px 20px;
+  }
+}
+.signup-error-message{
+ color: red;
+}
+.signup-msg-fail{
+  color: red;
+  margin-left: 120px;
+  margin-top: 5px;
+}

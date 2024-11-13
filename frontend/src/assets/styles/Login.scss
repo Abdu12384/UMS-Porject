@@ -1,0 +1,126 @@
+
+$primary-color: #6b46c1;
+$background-color: #f3e8ff;
+$white: #ffffff;
+$gray: #4a5568;
+$error-color: #e53e3e;
+
+.user-login-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $background-color;
+}
+
+.login-form {
+  background-color: $white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  width: 100%;
+  max-width: 400px;
+
+  h1 {
+    font-size: 1.875rem;
+    font-weight: bold;
+    text-align: center;
+    color: $primary-color;
+    margin-bottom: 1.5rem;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    label {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: $gray;
+    }
+
+    .input-wrapper {
+      position: relative;
+
+      .input-icon {
+        position: absolute;
+        left: 0.75rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: $gray;
+        width: 1.25rem;
+        height: 1.25rem;
+      }
+
+      input {
+        width: 100%;
+        padding: 0.625rem 0.75rem 0.625rem 2.5rem;
+        border: 1px solid lighten($gray, 40%);
+        border-radius: 0.375rem;
+        font-size: 0.875rem;
+        transition: border-color 0.2s ease-in-out;
+
+        &:focus {
+          outline: none;
+          border-color: $primary-color;
+          box-shadow: 0 0 0 3px rgba($primary-color, 0.1);
+        }
+
+        &::placeholder {
+          color: lighten($gray, 20%);
+        }
+      }
+    }
+
+    .error {
+      font-size: 0.75rem;
+      color: $error-color;
+      margin-top: 0.25rem;
+    }
+  }
+
+  button {
+    background-color: $primary-color;
+    color: $white;
+    border: none;
+    border-radius: 0.375rem;
+    padding: 0.625rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba($primary-color, 0.3);
+    }
+  }
+}
+
+// Custom styles for react-toastify
+.Toastify__toast {
+  border-radius: 4px;
+}
+
+.Toastify__toast--success {
+  background-color: #48bb78;
+}
+
+.Toastify__toast--error {
+  background-color: #f56565;
+}
+.sign{
+  margin-left: 140px;
+  
+}
